@@ -1,41 +1,12 @@
-name: TimeWeb Deploy
+name: Render Deploy
 on:
   push:
+env:
+  RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Deploy to Hosting
-        uses: DemidovDenis/javarush-project-3@dev
-        env:
-          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
-          with:
-            src: 'dist/'
-            dest: 'root@"${{secrets.FTP_SERVER}}":/path/on/remote'
-
-
-
-
-#name: Render Deploy
-#on:
-#  push:
-#env:
-#  RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
-#jobs:
-#  deploy:
-#    name: Deploy app
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Wait for Render Deployment
-#        uses: actions/checkout@v1
-##        with:
-##          render-token: ${{ secrets.RENDER_TOKEN }}
-##          github-token: ${{ secrets.GITHUB_TOKEN }}
-##          service-id: srv-xxxxxxxxxxxxxxxxxxxx
-#          #            retries: 20
-#          #            wait: 16000
-#          #            sleep: 30000
+      - name: Wait for Render Deployment
+        uses: actions/checkout@v1
