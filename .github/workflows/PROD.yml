@@ -9,8 +9,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-#      - name: Deploy to Hosting
-#        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      - name: Deploy to Hosting
+        uses: DemidovDenis/javarush-project-3@dev
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
