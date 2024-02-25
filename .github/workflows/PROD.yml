@@ -11,11 +11,12 @@ jobs:
 
       - name: Deploy to Hosting
         uses: DemidovDenis/javarush-project-3@dev
-        with:
-          server: text-quest-games.net
-          username: root
-          password: ${{ secrets.FTP_PASSWORD }}
-#          server-dir: /text-quest-games.net/application/
+        env:
+          DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+          with:
+            flags: '-avc --delete'
+            src: 'dist/'
+            dest: 'root@"${{secrets.FTP_SERVER}}":/path/on/remote'
 
 
 
