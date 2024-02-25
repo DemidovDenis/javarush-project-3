@@ -12,10 +12,10 @@ jobs:
       - name: Deploy to Hosting
         uses: DemidovDenis/javarush-project-3@dev
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: text-quest-games.net
+          username: root
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /text-quest-games.net/application/
+#          server-dir: /text-quest-games.net/application/
 
 
 
