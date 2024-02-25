@@ -1,19 +1,41 @@
-name: Render Deploy
+name: TimeWeb Deploy
 on:
   push:
-env:
-  RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
 jobs:
   deploy:
     name: Deploy app
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for Render Deployment
-        uses: actions/checkout@v1
-#        with:
-#          render-token: ${{ secrets.RENDER_TOKEN }}
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
-#          service-id: srv-xxxxxxxxxxxxxxxxxxxx
-          #            retries: 20
-          #            wait: 16000
-          #            sleep: 30000
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Deploy to Hosting
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /text-quest-games.net/public_html/
+
+
+
+
+#name: Render Deploy
+#on:
+#  push:
+#env:
+#  RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
+#jobs:
+#  deploy:
+#    name: Deploy app
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Wait for Render Deployment
+#        uses: actions/checkout@v1
+##        with:
+##          render-token: ${{ secrets.RENDER_TOKEN }}
+##          github-token: ${{ secrets.GITHUB_TOKEN }}
+##          service-id: srv-xxxxxxxxxxxxxxxxxxxx
+#          #            retries: 20
+#          #            wait: 16000
+#          #            sleep: 30000
