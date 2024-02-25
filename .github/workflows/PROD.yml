@@ -15,7 +15,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /text-quest-games.net/public_html/
+          server-dir: /text-quest-games.net/application/
 
 
 
